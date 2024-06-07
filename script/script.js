@@ -33,3 +33,5 @@ btnAdd.addEventListener('click', ()=>{
 let sorted = inputs.sort()
 
 btnSort.addEventListener('click', sorted)
+
+console.log(sorted);
