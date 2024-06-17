@@ -5,33 +5,38 @@ let list = document.querySelector('ul')
 
 let inputs = [input]
 
-btnAdd.addEventListener('click', ()=>{
-    for(let input of inputs){
-        list.innerHTML += `
-                        
-                        <li><input type="checkbox">${input.value}</li>
-                            `
+function addList() {
+    btnAdd.addEventListener('click', ()=>{
+        for(let input of inputs){
+            list.innerHTML += `<li><input type="checkbox">${input.value}</li>`
+        }
+        input.value = '';
+    })
+}
+
+addList()
+
+list.addEventListener('change', function(event){
+    if(event.target.type === 'checkbox'){
+        if(event.target.checked){
+            event.target.parentNode.classList.add('checked');
+        } else {
+            event.target.parentNode.classList.remove('checked');
+        }
     }
-    input.value = ''
-    let checkbox1 = document.querySelectorAll('[type]')
-    
-    for(let checkbox of checkbox1){
-        checkbox.addEventListener('click', function(event){
-            if(event.target.tagName == 'LI'){
-                event.target.classList.toggle('checked')
-            }
-        })
+});
 
+list.addEventListener('click', function(event){
+    if(event.target.tagName !== 'INPUT'){
+        event.target.remove();
     }
-})
-// list.addEventListener('click', function(event){
-//     if(event.target.tagName == 'LI'){
-//         event.target.classList.toggle('checked')
-//     }
-// })
+});
 
-let sorted = inputs.sort()
+btnSort.addEventListener('click', () => {
+    let liElements = [...document.querySelectorAll('li')];
+    let liTexts = liElements.map(li => li.textContent.trim());
 
-btnSort.addEventListener('click', sorted)
+    liTexts.sort();
 
-console.log(sorted);
+    list.innerHTML = liTexts.map(text => `<li><input type="checkbox">${text}</li>`).join('');
+});

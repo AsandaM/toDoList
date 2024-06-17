@@ -1,32 +1,56 @@
-body{
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 30px;
+  color: #333;
+}
+
+p {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
 }
 
 ul {
-    margin: 0;
-    padding: 0;
-  }
-
-li{
-    list-style: none;
-    cursor: pointer;
-    position: relative;
-    padding: 12px 8px 12px 40px;
-    font-size: 18px;
-    transition: 0.2s;
+  list-style-type: none;
+  padding: 0;
 }
 
-ul li.checked{
+ul li {
+  background: #fff;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+  width: 85%;
+  font-size: 24px;
+}
+
+ul li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 70%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+.checked {
   text-decoration: line-through;
-}
-
-ul li.checked::before{
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px; 
 }
